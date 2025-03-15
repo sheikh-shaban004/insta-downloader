@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="flex flex-col items-center p-10">
+        <h1 class="text-3xl font-bold">Instagram Downloader</h1>
+        <p class="text-gray-600">Paste an Instagram video or audio URL to download</p>
+        <input 
+            type="text" 
+            id="url" 
+            placeholder="Enter Instagram URL" 
+            class="border p-2 my-4 w-full max-w-md"
+        />
+        <button id="downloadBtn" class="bg-blue-500 text-white px-4 py-2 rounded shadow-lg hover:bg-blue-600">
+            Download
+        </button>
+        <p id="errorMessage" class="text-red-500 mt-4 hidden"></p>
+        <a id="downloadLink" href="" target="_blank" class="mt-4 text-blue-600 underline hidden" rel="noopener noreferrer">Download Media</a>
+
+        <!-- Ad Placement -->
+        <div class="mt-8 border-t pt-4">
+            <p class="text-gray-500 text-sm">Advertisement</p>
+            <div class="w-full h-20 bg-gray-200 flex items-center justify-center">Ad Space</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

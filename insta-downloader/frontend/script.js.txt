@@ -1,0 +1,35 @@
+document.getElementById('downloadBtn').addEventListener('click', async function() {
+    const url = document.getElementById('url').value;
+    const errorMessage = document.getElementById('errorMessage');
+    const downloadLink = document.getElementById('downloadLink');
+
+    // Clear any previous errors or links
+    errorMessage.classList.add('hidden');
+    downloadLink.classList.add('hidden');
+
+    try {
+        if (!url.trim()) {
+            throw new Error('Please enter a valid Instagram URL');
+        }
+
+        // Call backend to get download link
+        const response = await fetch('http://localhost:5000/download', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Invalid response received');
+        }
+
+        // Show download link
+        downloadLink.href = data.downloadUrl || '';
+        downloadLink.classList.remove('hidden');
+    } catch (err) {
+        errorMessage.textContent = err.message || 'An unknown error occurred';
+        errorMessage.classList.remove('hidden');
+    }
+});
